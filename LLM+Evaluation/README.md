@@ -16,7 +16,7 @@ It leverages the **Deepeval** framework for automated quality scoring via an eva
 
 ## ⚙️ Usage
 
-The pipeline is set up to evaluate a single turn (Turn 4) from the sample data, which contains a known hallucination for demonstration.
+The pipeline is set up to evaluate a single turn (Turn 14) from the sample data, which contains a known hallucination for demonstration.
 
 1.  **Run the pipeline:**
     ```bash
@@ -26,7 +26,7 @@ The pipeline is set up to evaluate a single turn (Turn 4) from the sample data, 
 2. **Architecture of the Evaluation Pipeline Flow**
     Data Extraction: A script reads the conversation history (sample-chat-conversation-01.json) to extract test cases, pairing a User Question (input) with the immediately following AI Answer (actual_output).
 
-    RAG System Integration (White-Box): The raw context text file is first loaded into the system to create a document object. The document is then broken down into smaller, manageable text chunks (context) to ensure the retrieved piece is relevant and fits within the LLM's context window. Each text chunk is converted into a numerical vector embedding using an embedding model. These vectors are then stored in the ChromaDB vector store, allowing for fast, semantic similarity searches during the retrieval phase of the RAG application.
+    RAG System Integration (White-Box): The raw text file is first loaded into the system to create a document object. The document is then broken down into smaller, manageable text chunks (context) to ensure the retrieved piece is relevant and fits within the LLM's context window.Each text chunk is converted into a numerical vector embedding using an embedding model. These vectors are then stored in the ChromaDB vector store, allowing for fast, semantic similarity searches during the retrieval phase of the RAG application.
 
     Retrieval: The function queries ChromaDB with the input to fetch the top-k most relevant documents.
 

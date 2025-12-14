@@ -4,6 +4,7 @@ from config import settings
 
 PERSIST_DIR = settings.PERSIST_DIR
 
+# Initialize and return a retriever for schema context
 def get_retriever(persist_dir=PERSIST_DIR):
     embedding_model = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
     vectorstore = Chroma(

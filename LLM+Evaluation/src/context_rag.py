@@ -1,7 +1,6 @@
 from langchain_chroma import Chroma
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from config import settings
-from sqlalchemy import text
 import shutil
 import os
 from src.evaluation_metrics import load_data_prepare_test_case
@@ -13,7 +12,8 @@ ai_response = ""
 
 if os.path.exists(PERSIST_DIR):
     shutil.rmtree(PERSIST_DIR)
-
+    
+# Initialize and build a Chroma vector store with context RAG
 def build_context_rag( chat_json_path, context_json_path, user_turn, ai_turn, persist_dir=PERSIST_DIR):
     global user_query, ai_response
     """Embed context into Chroma using LangChain."""
@@ -27,6 +27,5 @@ def build_context_rag( chat_json_path, context_json_path, user_turn, ai_turn, pe
     for i in retrieval_context:
             docs.append(i)
     vectorstore.add_texts(docs)
-    # vectorstore._client.persist()
     print(f"Stored {len(docs)} schema entries in Chroma vector store.")
     return vectorstore

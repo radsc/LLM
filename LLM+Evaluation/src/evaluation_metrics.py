@@ -5,7 +5,7 @@ from deepeval.test_case import LLMTestCase
 
 actual_output = ''
 
-# --- Custom Metric for Latency and Cost ---
+# Custom Metric for Latency and Cost Estimation
 def performance_metrics(latency, cost_per_token_usd) -> Dict[str, Any]:
 
     # Simple token estimation: 1 word ~ 1.3 tokens
